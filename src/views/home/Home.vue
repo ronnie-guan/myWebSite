@@ -18,11 +18,13 @@
     <intro />
     <!-- 给我们留言 -->
     <message />
+    <globalComponents />
   </div>
 </template>
 
 <script>
-import banner from '@/views/home/components/Banner';
+import banner from '@/views/home/components/Carousel';
+import globalComponents from '@/components/globalComponents';
 import AboutUs from '@/views/home/components/AboutUs';
 import CourseClass from '@/views/home/components/CourseClass';
 import Service from '@/views/home/components/Service';
@@ -44,6 +46,7 @@ export default {
     News,
     Intro,
     Message,
+    globalComponents
   },
   mixins: [scrollRevealMixin],
   data() {

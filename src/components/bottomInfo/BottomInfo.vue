@@ -72,7 +72,7 @@ export default {
 .footer {
   width: 100%;
   background-color: #333333;
-  padding: 60px 0;
+  padding: 33px 0;
 }
 .footCont {
   max-width: 1200px;

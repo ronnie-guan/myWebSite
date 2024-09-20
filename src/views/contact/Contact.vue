@@ -1,7 +1,62 @@
 <template>
-  <div>
-    <sub-nav-banner />
-    <div class="pubCon">
+  <div class="contact_arraystar">
+    <div class="title">Contact Arraystar</div>
+    <div class="submitForm">
+      <div class="form_row">
+        <div class="form_item">
+          <div class="title">Name</div>
+          <div class="dateInput">
+            <el-input
+              v-model="form.name"
+              placeholder="Your full name"
+            ></el-input>
+          </div>
+        </div>
+        <div class="form_item">
+          <div class="title">Email</div>
+          <div class="dateInput">
+            <el-input v-model="form.email" placeholder="Email"></el-input>
+          </div>
+        </div>
+      </div>
+      <div class="form_row" style="margin: 28px 0;">
+        <div class="form_item">
+          <div class="title">WebSite</div>
+          <div class="dateInput">
+            <el-input
+              v-model="form.webSite"
+              placeholder="WebSite http:// of https://"
+            ></el-input>
+          </div>
+        </div>
+        <div class="form_item">
+          <div class="title">Intended products</div>
+          <div class="dateInput">
+            <el-input
+              v-model="form.intended_Products"
+              placeholder="NeOn LED,SMD LED,COB LED"
+            ></el-input>
+          </div>
+        </div>
+      </div>
+      <div class="form_row">
+        <div class="form_item" style="width: 100%;">
+          <div class="title">Message</div>
+          <div class="dateInput">
+            <el-input
+              v-model="form.message"
+              placeholder="What can we do for you?"
+              type="textarea"
+              maxlength="100"
+            ></el-input>
+          </div>
+        </div>
+      </div>
+      <div class="form_btn">
+        <el-button>SUBMIT</el-button>
+      </div>
+    </div>
+    <!-- <div class="pubCon">
       <div class="contactCon">
         <div class="lfInfo">
           <h1>艾尼斯美妆培训连锁</h1>
@@ -37,33 +92,96 @@
         </div>
       </div>
       <div class="mapCon" id="mapCon"></div>
-    </div>
+    </div> -->
+    <globalComponents />
   </div>
 </template>
 
 <script>
-import SubNavBanner from '@/components/banner/SubNavBanner';
-import feedback from '@/components/feedback/Feedback';
-import scrollRevealMixin from '@/mixin/scrollRevealMixin.js';
+// import feedback from "@/components/feedback/Feedback";
+import globalComponents from "@/components/globalComponents";
+import scrollRevealMixin from "@/mixin/scrollRevealMixin.js";
 export default {
-  components: { SubNavBanner, feedback },
-  mixins: [scrollRevealMixin],
-  mounted() {
-    // 百度地图API功能
-    var map = new BMap.Map('mapCon'); // 创建Map实例
-    map.centerAndZoom(new BMap.Point(120.599847, 31.382564), 19); // 初始化地图,设置中心点坐标和地图级别
-    //添加地图类型控件
-    map.addControl(
-      new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP] })
-    );
-    map.addOverlay(new BMap.Marker(new BMap.Point(120.599847, 31.382564))); //添加标注
-    map.enableScrollWheelZoom(true); //鼠标放大缩小
+  components: { globalComponents },
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        webSite: "",
+        intended_Products: "",
+        message: ""
+      }
+    };
   },
+  methods: {
+    onSubmit() {
+      console.log("submit!");
+    }
+  },
+  mixins: [scrollRevealMixin]
 };
 </script>
 
 <style scoped>
-.pubCon {
+.contact_arraystar {
+  margin-top: 80px;
+  overflow: hidden;
+  color: white;
+  background-image: url("../../assets/Contactus/contactusBackground.jpg");
+  background-size: 100%;
+  background-position: center;
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 60.5px 0;
+  }
+  .submitForm {
+    max-width: 800px;
+    margin: auto;
+    .form_row {
+      display: flex;
+      justify-content: space-between;
+      .form_item {
+        width: 280px;
+        border: 1px solid #c0c4cc;
+        border-radius: 10px;
+        background-color: rgba(180, 180, 180, 0.3);
+        .title {
+          text-align: left;
+          margin: 0%;
+          font-size: 14px;
+          padding-left: 14px;
+          margin-top: 5px;
+          color: white;
+        }
+        .el-input__inner,
+        .el-textarea__inner {
+          height: 30px;
+          border: 0;
+          border-radius: 10px;
+          background-color: transparent;
+          color: white;
+        }
+        .el-textarea__inner {
+          height: 100px;
+        }
+      }
+    }
+    .form_btn {
+      width: 100%;
+      text-align: center;
+      .el-button {
+        width: 180px;
+        margin: 48px 0;
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
+}
+/* .pubCon {
   position: relative;
   padding-top: 450px;
   padding-bottom: 50px;
@@ -130,11 +248,11 @@ export default {
 .mapCon {
   width: 100%;
   height: 300px;
-}
+} */
 
 /* 1200px*/
 @media (max-width: 1200px) {
-  .pubCon {
+  /* .pubCon {
     padding-top: 20px;
   }
   .contactCon {
@@ -164,10 +282,6 @@ export default {
     font-size: 20px;
     font-weight: 400;
   }
-  /* .contactCon .lfInfo h2 {
-    font-weight: 400;
-    padding: 5px 0;
-  } */
   .contactCon .lfInfo .line {
     width: 100%;
     height: 1px;
@@ -192,6 +306,6 @@ export default {
     width: 90%;
     margin: auto;
     height: 300px;
-  }
+  } */
 }
 </style>

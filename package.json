@@ -10,9 +10,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.14.1",
     "scrollreveal": "^4.0.9",
     "vue": "^2.5.2",
+    "vue-count-to": "^1.0.13",
     "vue-router": "^3.0.1",
+    "vue-seamless-scroll": "^1.1.23",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {

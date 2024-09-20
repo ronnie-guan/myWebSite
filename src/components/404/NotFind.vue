@@ -1,7 +1,6 @@
 <template>
   <div class="notFindPage">
-    <h1>404</h1>
-    <h1>SORRY你要访问的页面弄丢了</h1>
+    <img src="./404报错.gif" alt="" srcset="" />
   </div>
 </template>
 
@@ -12,10 +11,12 @@ export default {};
 <style scoped>
 .notFindPage {
   background-color: #ccc;
-  padding: 160px 0 80px;
   text-align: center;
-}
-.notFindPage h1 {
-  font-size: 30px;
+  height: calc(65vh - 5px);
+  overflow: hidden;
+  img {
+    width: 100%;
+    margin-top: 80px;
+  }
 }
 </style>

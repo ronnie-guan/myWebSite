@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 /* 路由发生变化修改页面title */
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    document.title = to.meta.title + "_艾尼斯"
+    document.title = to.meta.title + " "
   }
   next()
 })
@@ -21,8 +22,8 @@ router.afterEach(() => {
 })
 
 
+Vue.use(ElementUI);
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

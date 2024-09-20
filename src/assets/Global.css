@@ -4,7 +4,7 @@
     padding: 0;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    font-family: helvetica,"pingFang SC","Microsoft Yahei",sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }  
 body{
@@ -14,8 +14,10 @@ a{
     text-decoration: none;
 }
 
-.router-link-active{
-    font-weight: bold;
+.nav_menu .router-link-active, .nav_menu a:hover {
+    /* font-weight: bold; */
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
 }
 /* 公共宽度 */
 .pubCon{
