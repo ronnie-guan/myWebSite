@@ -6,6 +6,11 @@
         <h1>SHARING TOGETHER</h1>
         <el-Button @click="dialogVisible = true">Watch Video</el-Button>
       </div>
+      <img
+        src="../../assets/aboutus/forAboutUs_logo_bkg_white.jpg"
+        alt=""
+        srcset=""
+      />
       <video
         autoplay
         loop
@@ -428,6 +433,13 @@ export default {
   height: 60vh;
   margin-top: 80px;
   position: relative;
+  img {
+    position: absolute;
+    height: 60px;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+  }
   .video_Btn {
     position: absolute;
     top: 40%;
@@ -459,10 +471,10 @@ export default {
       height: 100%;
     }
   }
-.el-dialog__headerbtn {
-  top: 10px;
-  right: 10px;
-}
+  .el-dialog__headerbtn {
+    top: 10px;
+    right: 10px;
+  }
   .fullVideo {
     /* height: 60vh; */
     width: 100%;
@@ -501,7 +513,8 @@ export default {
     justify-content: space-between;
     padding: 28px;
     height: 280px;
-    background-image: url("https://img2.baidu.com/it/u=3608671553,2425458155&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500");
+    background-image: url("../../assets/aboutus/bkg.jpg");
+    background-size: 100% 100%;
     .left,
     .center,
     .right {
@@ -530,6 +543,7 @@ export default {
     .title {
       font-size: 28px;
       margin: 28px;
+      font-weight: bold;
     }
     .honor_list {
       display: flex;

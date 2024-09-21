@@ -118,11 +118,11 @@ export default {
   .product_select {
     width: 200px;
     height: 280px;
-    background-color: red;
   }
   .product_list {
     flex: 1;
     padding-left: 18px;
+    background-color: navy;
   }
 }
 @media (max-width: 1200px) {

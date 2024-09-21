@@ -49,8 +49,9 @@ export default {
       navMenuList: [
         //导航
         { id: "001", path: "/home", itmeName: "HOME" },
+        { id: "002", path: "/projects", itmeName: "Projects" },
         { id: "003", path: "/products", itmeName: "Products" },
-        { id: "002", path: "/about", itmeName: "ABOUT US" },
+        { id: "004", path: "/about", itmeName: "ABOUT US" },
         // { id: '003', path: '/course', itmeName: '课程分类' },
         // { id: '004', path: '/teacher', itmeName: '教师团队' },
         // { id: '005', path: '/news', itmeName: '新闻动态' },
@@ -85,7 +86,6 @@ export default {
   max-width: 1200px;
   height: 80px;
   margin: auto;
-  padding: 0 20px;
   color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
