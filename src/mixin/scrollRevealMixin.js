@@ -16,5 +16,11 @@ export default {
         this.scrollReveal.reveal('.pubTit,.aboImg,.homeBanner h6', { ...config, origin: 'bottom' });
         this.scrollReveal.reveal('.aboCon .lt,.aboCon .tit,.contactCon .lfInfo,.homeBanner h1', { ...config, origin: 'left' });
         this.scrollReveal.reveal('.aboCon .rt img,.contactCon .rtForm', { ...config, origin: 'right' });
+        this.scrollReveal.reveal('.arraystar .title', { ...config, origin: 'bottom' });
+        this.scrollReveal.reveal('.company_production_line .title', { ...config, origin: 'bottom' });
+        this.scrollReveal.reveal('.certification_system .title', { ...config, origin: 'bottom' });
+        this.scrollReveal.reveal('.introduced .title', { ...config, origin: 'left' });
+        this.scrollReveal.reveal('.introduced .detail', { ...config, origin: 'right' });
+        
     },
 }
