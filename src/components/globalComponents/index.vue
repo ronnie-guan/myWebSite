@@ -1,8 +1,13 @@
 <template>
   <div class="globalBox" v-if="isShow">
-    <div>1</div>
-    <div>2</div>
-    <div class="backTop" @click="backTop">3</div>
+    <div class="phone">
+      <i class="el-icon-phone"></i><span>400-400-400</span>
+    </div>
+    <div class="custom">
+      <i class="el-icon-s-custom"></i
+      ><span><router-link to="./contact">contactUs</router-link></span>
+    </div>
+    <div class="backTop" @click="backTop"><i class="el-icon-arrow-up"></i></div>
   </div>
 </template>
 
@@ -54,18 +59,41 @@ export default {
   position: fixed;
   right: 10px;
   bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   div {
-    width: 62px;
-    height: 62px;
-    background-color: blue;
+    width: 34px;
+    background-color: rgba(102, 102, 120, 0.7);
     color: white;
     font-size: 18px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 5px;
     cursor: pointer;
+    height: 34px;
+    text-align: left;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    i {
+      padding: 10px;
+    }
+    span {
+      width: 90px;
+      transition: width 0.3s ease;
+      a {
+        color: white;
+      }
+    }
+  }
+  /* .phone:hover span,
+  .custom:hover span {
+    width: 90px;
+    padding-right: 10px;
+  } */
+  .phone:hover {
+    width: 125px;
+  }
+  .custom:hover {
+    width: 100px;
   }
 }
 /* 小于768 */

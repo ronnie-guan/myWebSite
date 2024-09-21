@@ -130,7 +130,7 @@ export default {
   color: white;
   background-image: url("../../assets/Contactus/contactusBackground.jpg");
   background-size: 100%;
-  background-position: center;
+  background-position: bottom;
   .title {
     font-size: 28px;
     font-weight: bold;

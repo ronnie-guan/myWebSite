@@ -368,6 +368,7 @@
         </div>
       </div>
     </div> -->
+    <globalComponents />
   </div>
 </template>
 
@@ -376,8 +377,9 @@
 import scrollRevealMixin from "@/mixin/scrollRevealMixin.js";
 import countTo from "vue-count-to";
 import vueSeamlessScroll from "vue-seamless-scroll";
+import globalComponents from "@/components/globalComponents";
 export default {
-  components: { countTo, vueSeamlessScroll },
+  components: { countTo, vueSeamlessScroll, globalComponents },
   mixins: [scrollRevealMixin],
   data() {
     return {
@@ -600,10 +602,12 @@ export default {
     }
   }
   .certification_system {
+    
     .title {
       font-size: 28px;
       text-align: center;
       margin: 68px 0;
+      font-weight: bold;
     }
     .introduction_box {
       display: flex;
