@@ -37,29 +37,29 @@ export default {
       footInfoList: [
         {
           id: '001',
-          title: '关于我们',
+          title: 'aboutUs',
           subTitList: [
-            { subTitId: '1', subTit: '穿衣培训' },
-            { subTitId: '2', subTit: '化妆培训' },
-            { subTitId: '3', subTit: '塑性培训' },
+            { subTitId: '1', subTit: 'aboutUs' },
+            { subTitId: '2', subTit: 'aboutUs' },
+            { subTitId: '3', subTit: 'aboutUs' },
           ],
         },
         {
           id: '002',
-          title: '课程分类',
+          title: 'Projects',
           subTitList: [
-            { subTitId: '1', subTit: '女模特' },
-            { subTitId: '2', subTit: '男模特' },
-            { subTitId: '3', subTit: '儿童模特' },
+            { subTitId: '1', subTit: 'Projects' },
+            { subTitId: '2', subTit: 'Projects' },
+            { subTitId: '3', subTit: 'Projects' },
           ],
         },
         {
           id: '003',
-          title: '学员感言',
+          title: 'Products',
           subTitList: [
-            { subTitId: '1', subTit: '教师团队' },
-            { subTitId: '2', subTit: '新闻中心' },
-            { subTitId: '3', subTit: '联系我们' },
+            { subTitId: '1', subTit: 'Products' },
+            { subTitId: '2', subTit: 'Products' },
+            { subTitId: '3', subTit: 'Products' },
           ],
         },
       ],

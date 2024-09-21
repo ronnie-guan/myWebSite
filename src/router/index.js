@@ -7,6 +7,7 @@ import teacher from "@/views/teacher/Teacher"
 import news from "@/views/news/News"
 import contact from "@/views/contact/Contact"
 import products from "@/views/products/Products"
+import productsDetail from "@/views/products/ProductsDetail"
 import projects from "@/views/projects/projects"
 import notFind from "@/components/404/NotFind"
 
@@ -28,6 +29,7 @@ const routes = [
   { path: '/news', component: news, meta: { title: '新闻动态' } },
   { path: '/contact', component: contact, meta: { title: 'contact' } },
   { path: '/products', component: products, meta: { title: 'products' } },
+  { path: '/products/detail', component: productsDetail, meta: { title: 'productsDetail' } },
   { path: '/projects', component: projects, meta: { title: 'projects' } },
   { path: '*', component: notFind, meta: { title: '404' } },
 ]

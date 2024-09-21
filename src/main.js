@@ -3,6 +3,13 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+zhLocale.el.pagination = {
+  pagesize: '/page',
+  total: `Total {total}`,
+  goto: 'Go to',
+  pageClassifier: ''
+}
 /* 路由发生变化修改页面title */
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
