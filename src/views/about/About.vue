@@ -345,29 +345,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="pubCon aboCon">
-      <div class="aboImg">
-        <img
-          src="https://ntemimg.wezhan.cn/contents/sitefiles2038/10193466/images/-38651.png"
-          alt=""
-        />
-        <div class="boxLine"></div>
-        <div class="topLine"></div>
-        <div class="bottmLine"></div>
-        <div class="tit">
-          <p>关于我们</p>
-          <p>ABOUT US</p>
-        </div>
-      </div>
-      <article>{{ about_cont }}</article>
-      <div class="items">
-        <div class="item" v-for="item in itemList" :key="item.id">
-          <i class="fa fa-camera-retro fa-2x"></i>
-          <span>{{ item.title }}</span>
-          <span>{{ item.content }}</span>
-        </div>
-      </div>
-    </div> -->
     <globalComponents />
   </div>
 </template>

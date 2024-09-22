@@ -104,6 +104,72 @@
         </el-carousel>
       </div>
     </div>
+    <div class="features">
+      <h1>Features</h1>
+      <div class="features_content">
+        <div class="features_content_detail_left">
+          <div
+            class="item"
+            v-for="(item, index) in Object.keys(productsData.Features).slice(
+              0,
+              halfLength
+            )"
+          >
+            <div class="name">{{ item }}</div>
+            <div class="value">{{ productsData.Features[item] }}</div>
+          </div>
+        </div>
+        <div class="features_content_detail_right">
+          <div
+            class="item"
+            v-for="(item, index) in Object.keys(productsData.Features).slice(
+              halfLength
+            )"
+          >
+            <div class="name">{{ item }}</div>
+            <div class="value">{{ productsData.Features[item] }}</div>
+          </div>
+        </div>
+        <div class="enclosure">
+          <h1>Enclosure:</h1>
+          <el-button
+            >Specification sheet <i class="el-icon-download"></i
+          ></el-button>
+          <el-divider></el-divider>
+          <h1>Authentication</h1>
+          <div class="mini_icon">
+            <img
+              src="http://t13.baidu.com/it/u=2427297025,2025803767&fm=224&app=112&f=JPEG?w=500&h=500"
+              alt=""
+              srcset=""
+              v-for="(item, index) in productsData.Authentication"
+              :key="index"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="other_box">
+        <h1>Other Recommendations For Your Business</h1>
+        <div class="other_product">
+          <div
+            class="item"
+            v-for="(item, index) in productsData.RelatedProducts"
+            :key="index"
+          >
+            <img
+              src="http://t13.baidu.com/it/u=2427297025,2025803767&fm=224&app=112&f=JPEG?w=500&h=500"
+              alt=""
+              srcset=""
+            />
+            <div class="name">{{ item.productName }}</div>
+            <div class="parameters1"></div>
+            <div class="parameters2"></div>
+            <div class="parameters3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <globalComponents />
   </div>
 </template>
@@ -282,6 +348,12 @@ export default {
     });
     this.breadCrumbs = [...this.breadCrumbs, ...path, name];
   },
+  computed: {
+    halfLength() {
+      // 计算一半的长度
+      return Math.ceil(Object.keys(this.productsData.Features).length / 2);
+    }
+  },
   mixins: [scrollRevealMixin]
 };
 </script>
@@ -378,7 +450,7 @@ export default {
           height: 95%;
           .el-radio-group {
             display: flex;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             flex-wrap: wrap;
           }
           .option_item {
@@ -399,6 +471,72 @@ export default {
         width: 8px;
         height: 8px;
         border-radius: 8px;
+      }
+    }
+  }
+  .features {
+    margin-bottom: 24px;
+    h1 {
+      margin: 12px 0;
+    }
+    .features_content {
+      display: flex;
+      .features_content_detail_left,
+      .features_content_detail_right {
+        width: 24%;
+        border-right: 2px solid gray;
+        padding-right: 12px;
+        margin-right: 12px;
+        .item {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 18px;
+          .name {
+            font-size: 12px;
+            font-weight: bold;
+          }
+          .value {
+            font-size: 12px;
+          }
+        }
+      }
+      .enclosure {
+        flex: 1;
+        .mini_icon {
+          display: flex;
+          img {
+            width: 38px;
+            height: 38px;
+            margin: 0 4px;
+          }
+        }
+      }
+    }
+  }
+  .other_box {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 48px;
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .other_product {
+      display: flex;
+      justify-content: center;
+      .item {
+        img {
+          width: 120px;
+          height: 120px;
+          margin: 0 12px;
+          border-radius: 12px;
+        }
+        .name {
+          text-align: center;
+          font-weight: bold;
+          margin: 8px 0
+        }
       }
     }
   }

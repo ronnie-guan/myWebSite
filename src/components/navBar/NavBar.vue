@@ -377,7 +377,11 @@ export default {
 .superMenu {
   max-width: 1200px;
   margin: auto;
-  padding: 12px 0;
+  padding: 12px;
+  position: absolute;
+  background-color: black;
+  left: 0;
+  right: 0;
   .super_menu_type {
     display: flex;
     .super_menu_item {
