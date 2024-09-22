@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" @mouseleave="()=> menuId='001'">
     <div class="navBar" :class="{ open: isOpenMenu }">
       <div class="nav_logo">
         <router-link to="/" style="display: block;"
@@ -12,7 +12,12 @@
           :key="item.id"
           :to="item.path"
           @click.native="isOpenMenu = !isOpenMenu"
-          >{{ item.itmeName }}</router-link
+         
+          >
+          <span  @mouseover="menuHover(item.id)">
+            {{ item.itmeName }}
+          </span>
+          </router-link
         >
         <i
           slot="suffix"
@@ -39,6 +44,203 @@
         </div>
       </div>
     </div>
+    <div class="superMenu" v-if="menuId === '003'">
+      <div class="super_menu_type">
+        <div class="super_menu_item" @mouseover="handleHover('COB')">
+          <img src="../../assets/superMenu/第一排产品大类图片/COB.jpg" alt="" srcset="">
+          <div class="item_title">COB</div>
+        </div>
+        <div class="super_menu_item" @mouseover="handleHover('NEON')">
+          <img src="../../assets/superMenu/第一排产品大类图片/NEON.jpg" alt="" srcset="">
+          <div class="item_title">NEON</div>
+        </div>
+        <div class="super_menu_item" @mouseover="handleHover('POWER')">
+          <img src="../../assets/superMenu/第一排产品大类图片/POWER.jpg" alt="" srcset="">
+          <div class="item_title">POWER</div>
+        </div>
+        <div class="super_menu_item" @mouseover="handleHover('SMD')">
+          <img src="../../assets/superMenu/第一排产品大类图片/SMD.jpg" alt="" srcset="">
+          <div class="item_title">SMD</div>
+        </div>
+        <div class="super_menu_item" @mouseover="handleHover('Wall Washer')">
+          <img src="../../assets/superMenu/第一排产品大类图片/Wall Washer.jpg" alt="" srcset="">
+          <div class="item_title">Wall Washer</div>
+        </div>
+        <div class="super_menu_item" @mouseover="handleHover('Controller')">
+          <img src="../../assets/superMenu/第一排产品大类图片/控制器.jpg" alt="" srcset="">
+          <div class="item_title">Controller</div>
+        </div>
+      </div>
+      <div class="productDetails_box">
+        <div class="COB_list COB" v-if="showProduct ==='COB'">
+          <h1>COB Series LED Strip</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Classic COB.jpg" alt="" srcset="">
+              <div class="title">Classic COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Free Cut COB.jpg" alt="" srcset="">
+              <div class="title">Free Cut COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/High Brightness COB.jpg" alt="" srcset="">
+              <div class="title">High Brightness COB</div>
+            </div>
+            
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/High Brightness Ultra Wide COB.jpg" alt="" srcset="">
+              <div class="title">High Brightness Ultra Wide COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/High Efficiency FCOB.jpg" alt="" srcset="">
+              <div class="title">High Efficiency FCOB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Magic COB.jpg" alt="" srcset="">
+              <div class="title">Magic COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Reel To Reel COB.jpg" alt="" srcset="">
+              <div class="title">Reel To Reel COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/RGB COB.jpg" alt="" srcset="">
+              <div class="title">RGB COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/RGBW COB.jpg" alt="" srcset="">
+              <div class="title">RGBW COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Tunable COB.jpg" alt="" srcset="">
+              <div class="title">Tunable COB</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/COB Series LED Strip/Waterproof COB.jpg" alt="" srcset="">
+              <div class="title">Waterproof COB</div>
+            </div>
+          </div>
+        </div>
+        <div class="COB_list NEON" v-if="showProduct ==='NEON'">
+          <h1>LED Neon Strip Light</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/LED Neon Strip Light/3D Bend Neon.jpg" alt="" srcset="">
+              <div class="title">3D Bend Neon</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/LED Neon Strip Light/Dream Color Neon.jpg" alt="" srcset="">
+              <div class="title">Dream Color Neon</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/LED Neon Strip Light/High Voltage Neon.jpg" alt="" srcset="">
+              <div class="title">High Voltage Neon</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/LED Neon Strip Light/Side Bend Neon.jpg" alt="" srcset="">
+              <div class="title">Side Bend Neon</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/LED Neon Strip Light/Top Bend Neon.jpg" alt="" srcset="">
+              <div class="title">Top Bend Neon</div>
+            </div>
+          </div>
+        </div>
+        <div class="COB_list POWER" v-if="showProduct ==='POWER'">
+          <h1>POWER</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/POWER/Dimmable Waterproof LED Power Supply.jpg" alt="" srcset="">
+              <div class="title">Dimmable Waterproof LED Power Supply</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/POWER/Switch LED Power Supply.jpg" alt="" srcset="">
+              <div class="title">Switch LED Power Supply</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/POWER/Waterproof LED Power Supply.jpg" alt="" srcset="">
+              <div class="title">Waterproof LED Power Supply</div>
+            </div>
+          </div>
+        </div>
+        <div class="COB_list SMD" v-if="showProduct ==='SMD'">
+          <h1>SMD Series LED Strip</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/2216.jpg" alt="" srcset="">
+              <div class="title">2216</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/2835.jpg" alt="" srcset="">
+              <div class="title">2835</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/3014.jpg" alt="" srcset="">
+              <div class="title">3014</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/3528-temp.jpg" alt="" srcset="">
+              <div class="title">3528-temp</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/4040.jpg" alt="" srcset="">
+              <div class="title">4040</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/5050.jpg" alt="" srcset="">
+              <div class="title">5050</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/SMD Series LED Strip/Magic Series LED Strip.jpg" alt="" srcset="">
+              <div class="title">Magic Series LED Strip</div>
+            </div>
+          </div>
+        </div>
+        <div class="COB_list Wall Washer" v-if="showProduct ==='Wall Washer'">
+          <h1>Wall Washer Series LED Strip</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/Wall Washer Series LED Strip/ART-WL1006-56-X-24.jpg" alt="" srcset="">
+              <div class="title">ART-WL1006-56-X-24</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Wall Washer Series LED Strip/ART-WL1207-56-X-24.jpg" alt="" srcset="">
+              <div class="title">ART-WL1207-56-X-24</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Wall Washer Series LED Strip/ART-WL1616-48-X-24.jpg" alt="" srcset="">
+              <div class="title">ART-WL1616-48-X-24</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Wall Washer Series LED Strip/ART-WL2010--X-24.jpg" alt="" srcset="">
+              <div class="title">ART-WL2010--X-24</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Wall Washer Series LED Strip/ART-WL3030-48-X-24.jpg" alt="" srcset="">
+              <div class="title">ART-WL3030-48-X-24</div>
+            </div>
+          </div>
+        </div>
+        <div class="COB_list Controller" v-if="showProduct ==='Controller'">
+          <h1>Controller</h1>
+          <div class="list">
+            <div class="item">
+              <img src="../../assets/superMenu/Controller/DMX.jpg" alt="" srcset="">
+              <div class="title">DMX</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Controller/RF.jpg" alt="" srcset="">
+              <div class="title">RF</div>
+            </div>
+            <div class="item">
+              <img src="../../assets/superMenu/Controller/SPI.jpg" alt="" srcset="">
+              <div class="title">SPI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -59,13 +261,25 @@ export default {
       ],
       isOpenMenu: false, //小屏幕下是否显示菜单
       openSearch: false,
-      input:''
+      input:'',
+      showProduct:'COB',
+      menuId:'001'
     };
   },
   methods: {
     handleClick() {
       this.$emit("judgment");
       this.openSearch = !this.openSearch;
+      this.menuId = '001'
+    },
+    handleHover(type){
+      this.showProduct = type
+    },
+    menuHover(id){
+      this.menuId = id
+      if(id==='003'){
+        this.openSearch = false
+      }
     }
   }
 };
@@ -156,6 +370,44 @@ export default {
       }
       div:hover {
         background-color: gray;
+      }
+    }
+  }
+}
+.superMenu {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 0;
+  .super_menu_type {
+    display: flex;
+    .super_menu_item {
+      width: 16.6%;
+      text-align: center;
+      color: white;
+      img {
+        height: 100px;
+      }
+    }
+  }
+  .productDetails_box {
+    .COB_list {
+      h1 {
+        color: white;
+        font-size: 14px;
+        margin-top: 12px;
+      }
+      .list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .item {
+          width: 16.6%;
+        text-align: center;
+        color: white;
+        img {
+          height: 100px;
+        }
+        }
       }
     }
   }
