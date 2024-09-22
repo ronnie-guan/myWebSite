@@ -439,7 +439,7 @@ export default {
           background: gray;
         }
         .indicator_active {
-          background: red;
+          background: blue;
         }
       }
       .optional {
