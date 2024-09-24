@@ -28,7 +28,7 @@ const routes = [
   { path: '/teacher', component: teacher, meta: { title: '教师团队' } },
   { path: '/news', component: news, meta: { title: '新闻动态' } },
   { path: '/contact', component: contact, meta: { title: 'contact' } },
-  { path: '/products', component: products, meta: { title: 'products' } },
+  { path: '/products/:id', component: products, meta: { title: 'products' } },
   { path: '/products/detail', component: productsDetail, meta: { title: 'productsDetail' } },
   { path: '/projects', component: projects, meta: { title: 'projects' } },
   { path: '*', component: notFind, meta: { title: '404' } },

@@ -16,7 +16,7 @@ a{
 
 .nav_menu .router-link-active, .nav_menu a:hover {
     /* font-weight: bold; */
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid blue;
     padding-bottom: 5px;
 }
 /* 公共宽度 */

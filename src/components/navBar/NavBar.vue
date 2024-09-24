@@ -14,9 +14,7 @@
           @click.native="isOpenMenu = !isOpenMenu"
          
           >
-          <span  @mouseover="menuHover(item.id)">
-            {{ item.itmeName }}
-          </span>
+          <span  @mouseover="menuHover(item.id)">{{ item.itmeName }}</span>
           </router-link
         >
         <i
@@ -251,13 +249,13 @@ export default {
       navMenuList: [
         //导航
         { id: "001", path: "/home", itmeName: "HOME" },
-        { id: "002", path: "/projects", itmeName: "Projects" },
-        { id: "003", path: "/products", itmeName: "Products" },
+        { id: "002", path: "/projects", itmeName: "PROJECTS" },
+        { id: "003", path: "/products/00001", itmeName: "PRODUCTS" },
         { id: "004", path: "/about", itmeName: "ABOUT US" },
         // { id: '003', path: '/course', itmeName: '课程分类' },
         // { id: '004', path: '/teacher', itmeName: '教师团队' },
         // { id: '005', path: '/news', itmeName: '新闻动态' },
-        { id: "006", path: "/contact", itmeName: "Contact Arraystar" },
+        { id: "006", path: "/contact", itmeName: "CONTACT ARRAYSTAR" },
       ],
       isOpenMenu: false, //小屏幕下是否显示菜单
       openSearch: false,

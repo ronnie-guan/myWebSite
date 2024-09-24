@@ -67,14 +67,40 @@
         </div>
       </div>
     </div>
+    <div class="colorTemperatureConversion">
+      <transition name="fade">
+        <img :src="changeImg" alt="Image" />
+      </transition>
+      <div class="btn_list">
+        <img
+          v-for="item in change_btn_list"
+          :key="item.type"
+          :src="item.url"
+          alt=""
+          srcset=""
+          @mouseover="handleChange(item.type)"
+        />
+      </div>
+    </div>
     <div class="productsAre">
       <h1>Projects</h1>
       <div class="loop">
-        <carousel :margin="12" :loop="true" :items="2" :autoplay="true" :autoHeight="true" :nav="false" :dots="false" :center="true" :activeIndex="1">
-          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;"/>
-          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;"/>
-          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;"/>
-          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;"/>
+        <carousel
+          :margin="12"
+          :stopOnHover="true"
+          :loop="true"
+          :items="2"
+          :autoplay="true"
+          :autoHeight="true"
+          :nav="false"
+          :dots="false"
+          :center="true"
+          :activeIndex="1"
+        >
+          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;" />
+          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;" />
+          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;" />
+          <img src="../../assets/Home/8.More/more.jpg" style="height: 634px;" />
         </carousel>
       </div>
     </div>
@@ -128,7 +154,82 @@ export default {
   },
   mixins: [scrollRevealMixin],
   data() {
-    return {};
+    return {
+      changeImg: require("../../assets/HomeChange/不同色温产品图/2700K.webp"),
+      img_list: [
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/2700K.webp"),
+          type: "2700K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/3000K.webp"),
+          type: "3000K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/4000K.webp"),
+          type: "4000K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/6500K.webp"),
+          type: "6500K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/r.webp"),
+          type: "r"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/g.webp"),
+          type: "g"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/b.webp"),
+          type: "b"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温产品图/rgb.webp"),
+          type: "rgb"
+        }
+      ],
+      change_btn_list: [
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/2700K_btn.webp"),
+          type: "2700K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/3000K_btn.webp"),
+          type: "3000K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/4000K_btn.webp"),
+          type: "4000K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/6500K_btn.webp"),
+          type: "6500K"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/r.webp"),
+          type: "r"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/g.webp"),
+          type: "g"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/b.webp"),
+          type: "b"
+        },
+        {
+          url: require("../../assets/HomeChange/不同色温按钮图/RGB_btn.webp"),
+          type: "rgb"
+        }
+      ]
+    };
+  },
+  methods: {
+    handleChange(val) {
+      this.changeImg = this.img_list.find(item => item.type === val).url;
+    }
   }
 };
 </script>
@@ -151,6 +252,10 @@ export default {
       width: 24%;
       img {
         width: 100%;
+        transition: transform 0.3s ease;
+      }
+      img:hover {
+        transform: scale(1.1);
       }
     }
   }
@@ -166,5 +271,42 @@ export default {
   .loop {
     height: 634px;
   }
+}
+.colorTemperatureConversion {
+  height: 100vh;
+  margin: auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  padding-left: 20px;
+  img {
+    width: 760px;
+  }
+  .btn_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 120px;
+    height: 85vh;
+    img {
+      width: 80px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -9,45 +9,32 @@
           <el-row class="tac">
             <el-col :span="24">
               <el-menu
-                :default-active="activeIndex"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
+                router
+                :default-active="activeIndex"
               >
                 <el-submenu index="1">
                   <template slot="title">
                     <span>导航一</span>
                   </template>
+                  <!-- <el-menu-item-group>
+                    <template slot="title">分组一</template>
+                    <el-menu-item index="1-1">选项1</el-menu-item>
+                    <el-menu-item index="1-2">选项2</el-menu-item>
+                  </el-menu-item-group> -->
+                  <!-- <el-menu-item-group title="分组2">
+                    <el-menu-item index="1-3">选项3</el-menu-item>
+                  </el-menu-item-group> -->
                   <el-submenu index="1-4">
                     <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">
-                      <el-dropdown placement="right-start">
-                        <span class="el-dropdown-link">
-                          下拉菜单<i
-                            class="el-icon-arrow-right el-icon--right"
-                          ></i>
-                        </span>
-                        <el-dropdown-menu slot="dropdown">
-                          <el-dropdown-item icon="el-icon-plus"
-                            >黄金糕</el-dropdown-item
-                          >
-                          <el-dropdown-item icon="el-icon-circle-plus"
-                            >狮子头</el-dropdown-item
-                          >
-                          <el-dropdown-item icon="el-icon-circle-plus-outline"
-                            >螺蛳粉</el-dropdown-item
-                          >
-                          <el-dropdown-item icon="el-icon-check"
-                            >双皮奶</el-dropdown-item
-                          >
-                          <el-dropdown-item icon="el-icon-circle-check"
-                            >蚵仔煎</el-dropdown-item
-                          >
-                        </el-dropdown-menu>
-                      </el-dropdown>
-                    </el-menu-item>
+                    <el-menu-item index="1-4-1">选项1</el-menu-item>
                   </el-submenu>
                 </el-submenu>
+                <el-menu-item index="2">
+                  <span slot="title">导航二</span>
+                </el-menu-item>
               </el-menu>
             </el-col>
           </el-row>
@@ -241,8 +228,7 @@
               </div>
             </div>
           </div>
-          
-          
+
           <div class="product_detail">
             <div class="img">
               <img
@@ -318,7 +304,7 @@ export default {
   components: { globalComponents },
   data() {
     return {
-      activeIndex: "1-4",
+      activeIndex: "1",
       products: [
         {
           id: 1001000000,
@@ -351,10 +337,18 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      console.log(key, "---", keyPath);
+      // this.$router.push(`./${key}`);
+      this.activeIndex = key;
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      console.log(key, "---", keyPath);
+      this.activeIndex = key;
+      // this.$router.push(`./${key}`);
+    },
+    handleSelect(key, keyPath) {
+      console.log(key, "---", keyPath);
+      this.activeIndex = key;
     },
     onRadioChange(type, e) {
       if (e.target.tagName === "INPUT") {

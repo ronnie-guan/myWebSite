@@ -22,5 +22,9 @@ export default {
         this.scrollReveal.reveal('.introduced .title', { ...config, origin: 'left' });
         this.scrollReveal.reveal('.introduced .detail', { ...config, origin: 'right' });
         
+        this.scrollReveal.reveal('.project', { ...config, origin: 'bottom' });
+        this.scrollReveal.reveal('.colorTemperatureConversion', { ...config, origin: 'bottom' });
+        this.scrollReveal.reveal('.productsAre', { ...config, origin: 'bottom' });
+        
     },
 }
