@@ -4,6 +4,8 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+import Vuex from 'vuex'
+import store from './vuex/store'
 zhLocale.el.pagination = {
   pagesize: '/page',
   total: `Total {total}`,
@@ -30,10 +32,12 @@ router.afterEach(() => {
 
 
 Vue.use(ElementUI);
+Vue.use(Vuex);
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
