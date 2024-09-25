@@ -137,6 +137,7 @@ import Intro from "@/views/home/components/Intro";
 import Message from "@/views/home/components/Message";
 import scrollRevealMixin from "@/mixin/scrollRevealMixin.js";
 import carousel from "vue-owl-carousel";
+import axios from "axios";
 export default {
   name: "Home",
   components: {
@@ -230,6 +231,19 @@ export default {
     handleChange(val) {
       this.changeImg = this.img_list.find(item => item.type === val).url;
     }
+  },
+  mounted() {
+    console.log(this.$store.state);
+    axios
+      .get("/api/products/ledstrip")
+      .then(response => {
+        console.log(response); // 打印响应数据
+        // 进一步处理响应数据
+      })
+      .catch(error => {
+        console.error("Error fetching product details:", error);
+        // 处理错误情况
+      });
   }
 };
 </script>

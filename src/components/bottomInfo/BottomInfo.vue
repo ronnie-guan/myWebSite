@@ -2,31 +2,38 @@
   <div>
     <div class="footer">
       <div class="footCont">
-        <div class="ftItem" v-for="item in footInfoList" :key="item.id">
+        <img src="../../assets/Logo/new_logo_arraystar.jpg" alt="" srcset="" />
+        <div
+          class="ftItem"
+          v-for="item in footInfoList"
+          :key="item.id"
+        >
           <h6>
             <a href="###">{{ item.title }}</a>
           </h6>
           <ul>
             <li v-for="subItem in item.subTitList" :key="subItem.subTitId">
-              <a href="###">{{ subItem.subTit }}</a>
+              <a
+                href="###"
+                :style="{
+                  textAlign:
+                    item.id === '003' && subItem.subTitId === '3'
+                      ? 'left'
+                      : 'center',
+                  lineHeight:
+                    item.id === '003' && subItem.subTitId === '3'
+                      ? '20px'
+                      : 'center'
+                }"
+                >{{ subItem.subTit }}</a
+              >
             </li>
           </ul>
-        </div>
-        <div class="ewm">
-          <img
-            src="https://ntemimg.wezhan.cn/contents/sitefiles2038/10193466/images/-38677.jpeg"
-            alt=""
-          />
         </div>
       </div>
     </div>
     <div class="copyright">
-      <div class="icon">
-        <i class="fa fa-phone"></i>
-        <i class="fa fa-map-marker"></i>
-        <i class="fa fa-envelope"></i>
-      </div>
-      <p>版权所有： ANS</p>
+      <p>Copyright @2023 Colorsled.com. All rights reserved</p>
     </div>
   </div>
 </template>
@@ -36,35 +43,38 @@ export default {
     return {
       footInfoList: [
         {
-          id: '001',
-          title: 'aboutUs',
+          id: "001",
+          title: "Support",
           subTitList: [
-            { subTitId: '1', subTit: 'aboutUs' },
-            { subTitId: '2', subTit: 'aboutUs' },
-            { subTitId: '3', subTit: 'aboutUs' },
-          ],
+            { subTitId: "1", subTit: "Download" },
+            { subTitId: "2", subTit: "Contact Us" },
+          ]
         },
         {
-          id: '002',
-          title: 'Projects',
+          id: "002",
+          title: "Products",
           subTitList: [
-            { subTitId: '1', subTit: 'Projects' },
-            { subTitId: '2', subTit: 'Projects' },
-            { subTitId: '3', subTit: 'Projects' },
-          ],
+            { subTitId: "1", subTit: "Projects" },
+            { subTitId: "2", subTit: "Projects" },
+            { subTitId: "3", subTit: "Projects" }
+          ]
         },
         {
-          id: '003',
-          title: 'Products',
+          id: "003",
+          title: "Contact Us",
           subTitList: [
-            { subTitId: '1', subTit: 'Products' },
-            { subTitId: '2', subTit: 'Products' },
-            { subTitId: '3', subTit: 'Products' },
-          ],
-        },
-      ],
+            { subTitId: "1", subTit: "+86-755-2923-1888" },
+            { subTitId: "2", subTit: "colors@colorsled.com" },
+            {
+              subTitId: "3",
+              subTit:
+                "17F, Block B, Building 2, SkyworthInnovotion Valley, Shiyon town. BooalDistrict,Shenzhen"
+            }
+          ]
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -91,11 +101,14 @@ export default {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  img {
+    height: 64px;
+  }
 }
 .ftItem,
 .ewm {
-  width: 25%;
-  text-align: center;
+  width: 20%;
+  text-align: left;
 }
 .ftItem h6 {
   height: 50px;
@@ -122,11 +135,13 @@ export default {
 }
 .copyright {
   width: 100%;
-  height: 110px;
+  height: 50px;
   color: #f5f5f5;
   background-color: black;
   text-align: center;
-  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .copyright .icon {
   margin-bottom: 20px;

@@ -250,7 +250,7 @@ export default {
         //导航
         { id: "001", path: "/home", itmeName: "HOME" },
         { id: "002", path: "/projects", itmeName: "PROJECTS" },
-        { id: "003", path: "/products/00001", itmeName: "PRODUCTS" },
+        { id: "003", path: "/products", itmeName: "PRODUCTS" },
         { id: "004", path: "/about", itmeName: "ABOUT US" },
         // { id: '003', path: '/course', itmeName: '课程分类' },
         // { id: '004', path: '/teacher', itmeName: '教师团队' },

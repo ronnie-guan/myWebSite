@@ -131,149 +131,30 @@
           <el-divider></el-divider>
         </div>
         <div class="detail_list">
-          <div class="product_detail">
+          <div class="product_detail" v-for="item in products" :key="item.id">
             <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
+              <img :src="item.imageUrl" alt="" srcset="" />
             </div>
             <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
+              <h1>{{ item.name }}</h1>
+              <div v-for="item in item.colourTemp.split(';')" :key="item">
+                <h2>{{ item }}</h2>
               </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
               <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="product_detail">
-            <div class="img">
-              <img
-                src="https://limg.jiagle.com/media/2020/12/23/98111516086958650.jpeg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="title_card">
-              <h1>LS35FK</h1>
-              <h2>*** /SET</h2>
-              <div class="more_btn">
-                <el-button>Learn more</el-button>
+                <el-button
+                  @click="
+                    () => {
+                      $router.push({
+                        path: '/products/productsDetail',
+                        query: {
+                          id: item.id,
+                          name: item.name
+                        }
+                      });
+                    }
+                  "
+                  >Learn more</el-button
+                >
               </div>
             </div>
           </div>
@@ -305,33 +186,7 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      products: [
-        {
-          id: 1001000000,
-          name: "Product A",
-          imageUrl: "https://example.com/images/ART_NSD10_Neon_Strip/p1.jpg",
-          colortTemp:
-            "2700K;3000K;3500K;4000K;5000K;6000K;R;G;B;2200K~6000K;RGB;Pixel",
-          secondary: [
-            {
-              //...
-              threeLevel: [
-                {
-                  name: "111",
-                  id: "121"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 1001000001,
-          name: "Product B",
-          imageUrl: "https://example.com/images/ART_NSD15_Neon_Strip/p1.jpg",
-          colortTemp: "2700K;3000K;3500K;4000K;5000K;6000K;"
-        }
-        // 省略其他产品
-      ],
+      products: this.$store.state.productList,
       filters: {}
     };
   },
@@ -396,7 +251,7 @@ export default {
     .detail_list {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap-reverse;
+      flex-wrap: wrap;
       .product_detail {
         width: 32%;
         overflow: hidden;
@@ -434,6 +289,7 @@ export default {
             text-align: center;
             margin-bottom: 12px;
             margin-top: 6px;
+            padding: 0 5px;
             .el-button {
               width: 100%;
             }
@@ -441,7 +297,7 @@ export default {
         }
       }
       .product_detail:hover .title_card {
-        margin-top: -50px;
+        margin-top: -100px;
       }
     }
     .page {

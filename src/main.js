@@ -5,7 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import Vuex from 'vuex'
-import store from './vuex/store'
+import store from './vuex/store';
 zhLocale.el.pagination = {
   pagesize: '/page',
   total: `Total {total}`,
