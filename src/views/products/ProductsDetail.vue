@@ -84,7 +84,11 @@
           >
             <div class="optional">
               <div class="title">
-                {{ item.Key.split(":")[0] + " : " + item.Key.split(":")[1] }}
+                {{
+                  item.Key.split(":")[0] +
+                    " : " +
+                    (item.Key.split(":")[1] || "")
+                }}
               </div>
               <div class="option">
                 <el-radio-group
@@ -234,143 +238,13 @@
 <script>
 import globalComponents from "@/components/globalComponents";
 import scrollRevealMixin from "@/mixin/scrollRevealMixin.js";
+import axios from "axios";
 export default {
   components: { globalComponents },
   data() {
     return {
       product_formData: {},
-      productsData: {
-        Authentication: [
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_24V.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_360du.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_3YearsWarranty.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_CE.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_ERP.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_IP67.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_ISO.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_LM-80.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_ROHS.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/Ctf_logo_UKCA.webp"
-        ],
-        EnclosureUrl: [
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/ART-NSD10 Neon Strip.pdf"
-        ],
-        Features: {
-          Model: "ART-NSD10 Neon Strip",
-          LedType: "2022",
-          LedQty: "480 LEDs/m",
-          Lumen: "",
-          CRI: ">90",
-          BeamAngle: "360°",
-          Voltage: "24V DC",
-          Power: "12 W/m",
-          IPRating: "IP67",
-          Warranty: "3 years",
-          CuttingLength: "25 mm",
-          OperatingTemp: "-20°C~50°C"
-        },
-        OptionalAccessoriesImageUrl: [
-          "http://43.131.6.9:80/resource/LedStrip/LED_Neon_Strip_Light/3D_Bend_Neon_Series/Cable_Outlet.webp",
-          "http://43.131.6.9:80/resource/LedStrip/LED_Neon_Strip_Light/3D_Bend_Neon_Series/common_NSON.webp",
-          "http://43.131.6.9:80/resource/LedStrip/LED_Neon_Strip_Light/3D_Bend_Neon_Series/Installation_Accessories.webp",
-          "http://43.131.6.9:80/resource/LedStrip/LED_Neon_Strip_Light/3D_Bend_Neon_Series/power_line.webp"
-        ],
-        RelatedProducts: [
-          {
-            productImageUrl:
-              "http://43.131.6.9:80/resource/LedStrip/LED_Neon_Strip_Light/Side_Bend_Neon_Series/ART-NS0511/ART-NS0511_1.webp",
-            productName: "ART-NS0511",
-            productId: "1204000006",
-            size: "5*11 mm",
-            ledQty: "126;300 LEDs/m",
-            power: "11 W/m"
-          },
-          {
-            productImageUrl:
-              "http://43.131.6.9:80/resource/LedStrip/COB_Series_LED_Strip/Tunable_COB_LED_Strip/ART-COB08-608-W+WW-1224/ART-COB08-608-W+WW-1224_1.webp",
-            productName: "ART-COB08-608-W+WW-1224",
-            productId: "1109000004",
-            size: "",
-            ledQty: "608 LEDs/m",
-            power: "7W+7W;10W+10W"
-          },
-          {
-            productImageUrl:
-              "http://43.131.6.9:80/resource/LedStrip/COB_Series_LED_Strip/High_Efficiency_FCOB_LED_Strip/ART-FCOB10-320-X-24/ART-FCOB10-320-X-24_1.webp",
-            productName: "ART-FCOB10-320-X-24",
-            productId: "1104000002",
-            size: "",
-            ledQty: "320 LEDs/m",
-            power: "15 W/m"
-          },
-          {
-            productImageUrl:
-              "http://43.131.6.9:80/resource/LedStrip/SMD_Series_LED_Strip/SMD_2835_Series_LED_Strip/High_Voltage_SMD_2835_LED_Strip/ART-HS2835-120-X-02/ART-HS2835-120-X-02_1.webp",
-            productName: "ART-HS2835-120-X-02",
-            productId: "1303040002",
-            size: "",
-            ledQty: "120 LEDs/m",
-            power: "11 W/m"
-          }
-        ],
-        mainImagesUrl: [
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/ART-NSD10_Neon_Strip_1.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/ART-NSD10_Neon_Strip_2.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/ART-NSD10_Neon_Strip_3.webp",
-          "http://43.131.6.9:80/resource/LedStrip/360_Emitting_LED_Neon_Strip_Light/LED_Neon_Strip_Series/ART-NSD10_Neon_Strip/ART-NSD10_Neon_Strip_4.webp"
-        ],
-        optionalField: [
-          {
-            Key: "CCT(K):Choose the lighting color you want.",
-            ValueNum: 9,
-            Value: [
-              "2700K",
-              "3000K",
-              "4000K",
-              "5000K",
-              "6500K",
-              "CCT Tunable",
-              "RGB",
-              "RGBW",
-              "SPI RGB"
-            ]
-          },
-          {
-            Key: "Voltage:",
-            ValueNum: 6,
-            Value: [
-              "DC 5V",
-              "DC 12V",
-              "DC 24V",
-              "DC 48V",
-              "DC 90~130V",
-              "DC 200~240V"
-            ]
-          },
-          {
-            Key: "Power:",
-            ValueNum: 1,
-            Value: ["INPUT:???W/m"]
-          },
-          {
-            Key: "CRI:",
-            ValueNum: 1,
-            Value: [">90"]
-          },
-          {
-            Key: "Strip Length:",
-            ValueNum: 2,
-            Value: ["5M", "INPUT:Length customization"]
-          },
-          {
-            Key: "Purchase Quantity:",
-            ValueNum: 1,
-            Value: ["INPUT:PCS"]
-          }
-        ],
-        optionalFieldNum: 6,
-        productID: "1001000001"
-      },
+      productsData: this.$store.state.productInfo,
       breadCrumbs: ["Home"],
       select_index: 0,
       parameters: 0
@@ -479,6 +353,7 @@ export default {
   mounted() {
     const data = this.$route.query;
     const name = data.name;
+    const id = data.id;
     this.product_formData.productName = name;
     this.product_formData.number = 1;
     const path = this.$route.path.split("/").filter(val => {
@@ -487,11 +362,23 @@ export default {
       }
     });
     this.breadCrumbs = [...this.breadCrumbs, ...path, name];
+    axios
+      .get(`http://43.131.6.9/api/ledstrip_product/${id}/details`)
+      .then(response => {
+        this.productsData = response.data;
+        // 进一步处理响应数据
+      })
+      .catch(error => {
+        console.error("Error fetching product details:", error);
+        // 处理错误情况
+      });
   },
   computed: {
     halfLength() {
       // 计算一半的长度
-      return Math.ceil(Object.keys(this.productsData.Features).length / 2);
+      if (this.productsData && this.productsData.Features) {
+        return Math.ceil(Object.keys(this.productsData.Features).length / 2);
+      }
     }
   },
   mixins: [scrollRevealMixin]
@@ -501,6 +388,7 @@ export default {
 <style scoped>
 .content {
   max-width: 1200px;
+  min-height: 800px;
   margin: auto;
   margin-top: 80px;
   .fontBold {

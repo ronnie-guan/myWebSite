@@ -140,7 +140,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          this.$message({ message: "Submit successfully", type: "success" });
         } else {
           console.log("error submit!!");
           return false;

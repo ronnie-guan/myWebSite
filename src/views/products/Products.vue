@@ -131,7 +131,12 @@
           <el-divider></el-divider>
         </div>
         <div class="detail_list">
-          <div class="product_detail" v-for="item in products" :key="item.id">
+          <div
+            class="product_detail"
+            v-for="item in paginatedProducts"
+            :key="item.id"
+            @click="handleGoDetail(item)"
+          >
             <div class="img">
               <img :src="item.imageUrl" alt="" srcset="" />
             </div>
@@ -141,20 +146,7 @@
                 <h2>{{ item }}</h2>
               </div>
               <div class="more_btn">
-                <el-button
-                  @click="
-                    () => {
-                      $router.push({
-                        path: '/products/productsDetail',
-                        query: {
-                          id: item.id,
-                          name: item.name
-                        }
-                      });
-                    }
-                  "
-                  >Learn more</el-button
-                >
+                <el-button>Learn more</el-button>
               </div>
             </div>
           </div>
@@ -163,11 +155,11 @@
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="2"
-            :page-sizes="[100, 200, 300, 400]"
-            :page-size="100"
+            :current-page="currentPage"
+            :page-sizes="[10, 20, 50, 100, 200, 300]"
+            :page-size="pageSize"
             layout="total, sizes, prev, pager, next, jumper"
-            :total="400"
+            :total="products.length"
           >
           </el-pagination>
         </div>
@@ -181,13 +173,15 @@
 // import feedback from "@/components/feedback/Feedback";
 import globalComponents from "@/components/globalComponents";
 import scrollRevealMixin from "@/mixin/scrollRevealMixin.js";
+import axios from "axios";
 export default {
   components: { globalComponents },
   data() {
     return {
       activeIndex: "1",
-      products: this.$store.state.productList,
-      filters: {}
+      filters: {},
+      currentPage: 1,
+      pageSize: 10
     };
   },
   methods: {
@@ -213,10 +207,44 @@ export default {
       }
     },
     handleSizeChange(val) {
+      this.pageSize = val;
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+      this.currentPage = val;
+    },
+    handleGoDetail(data) {
+      axios
+        .get(`http://43.131.6.9/api/ledstrip_product/${data.id}/details`)
+        .then(response => {
+          this.$store.commit("setProducInfo", response.data);
+          this.$router.push({
+            path: "/products/productsDetail",
+            query: {
+              id: data.id,
+              name: data.name
+            }
+          });
+          // 进一步处理响应数据
+        })
+        .catch(error => {
+          console.error("Error fetching product details:", error);
+          // 处理错误情况
+        });
+    }
+  },
+  mounted() {
+    console.log(this.$store.state);
+  },
+  computed: {
+    products() {
+      return this.$store.state.productList;
+    },
+    paginatedProducts() {
+      const start = (this.currentPage - 1) * this.pageSize;
+      const end = this.currentPage * this.pageSize;
+      return this.products.slice(start, end);
     }
   },
   mixins: [scrollRevealMixin]

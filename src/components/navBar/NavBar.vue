@@ -243,6 +243,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -279,6 +280,18 @@ export default {
         this.openSearch = false
       }
     }
+  },
+  mounted() {
+    axios
+      .get("http://43.131.6.9/api/products/ledstrip")
+      .then(response => {
+        this.$store.commit("setProductList", response.data.products);
+        // 进一步处理响应数据
+      })
+      .catch(error => {
+        console.error("Error fetching product details:", error);
+        // 处理错误情况
+      });
   }
 };
 </script>
